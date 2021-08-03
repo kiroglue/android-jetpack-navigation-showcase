@@ -16,8 +16,6 @@ class NotificationsFragment : Fragment() {
 	private lateinit var notificationsViewModel: NotificationsViewModel
 	private var _binding: FragmentNotificationsBinding? = null
 	
-	// This property is only valid between onCreateView and
-	// onDestroyView.
 	private val binding get() = _binding!!
 	
 	override fun onCreateView(
@@ -61,6 +59,13 @@ class NotificationsFragment : Fragment() {
 			btnExample4.setOnClickListener {
 				navigateWithoutDefaultData()
 			}
+			btnLoginExample1.setOnClickListener {
+				navigateToAccountDetail(true)
+			}
+			
+			btnLoginExample2.setOnClickListener {
+				navigateToAccountDetail(false)
+			}
 		}
 	}
 	
@@ -93,5 +98,11 @@ class NotificationsFragment : Fragment() {
 		findNavController()
 			.navigate(NotificationsFragmentDirections
 				.actionNotificationsToNotificationDetail2(2))
+	}
+	
+	private fun navigateToAccountDetail(isLogin: Boolean) {
+		findNavController()
+			.navigate(NotificationsFragmentDirections
+				.toProfile(isLogin))
 	}
 }

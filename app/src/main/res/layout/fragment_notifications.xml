@@ -57,5 +57,21 @@
         android:layout_margin="@dimen/activity_horizontal_margin">
     </androidx.appcompat.widget.AppCompatButton>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_login_example1"
+        android:text="To Profile with logined User"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin">
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_login_example2"
+        android:text="To Profile with not logined user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin">
+    </androidx.appcompat.widget.AppCompatButton>
+
 
 </LinearLayout>
