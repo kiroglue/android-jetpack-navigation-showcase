@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_dashboard"
+    app:startDestination="@id/navigation_dashboard">
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.kiroglue.navigationshowcase.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard">
+
+        <action
+            android:id="@+id/action_dashboard_to_dashboard_detail_no_value"
+            app:destination="@id/navigation_dashboard_detail_no_value" />
+
+        <action
+            android:id="@+id/action_dashboard_to_dashboard_detail_with_default_data"
+            app:destination="@id/navigation_dashboard_detail" >
+        </action>
+
+        <action
+            android:id="@+id/action_dashboard_to_dashboard_detail_with_overriden_data"
+            app:destination="@id/navigation_dashboard_detail" >
+            <argument
+                android:name="@string/arg_counter"
+                app:argType="integer"
+                android:defaultValue="10" />
+        </action>
+
+        <action
+            android:id="@+id/action_dashboard_to_dashboard_detail_with_value"
+            app:destination="@id/navigation_dashboard_detail" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard_detail_no_value"
+        android:name="com.kiroglue.navigationshowcase.ui.dashboarddetail.DashboardDetailNoValueFragment"
+        android:label="@string/title_dashboard_detail"
+        tools:layout="@layout/fragment_dashboard_detail" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard_detail"
+        android:name="com.kiroglue.navigationshowcase.ui.dashboarddetail.DashboardDetailFragment"
+        android:label="@string/title_dashboard_detail"
+        tools:layout="@layout/fragment_dashboard_detail" >
+        <argument
+            android:name="@string/arg_counter"
+            app:argType="integer"
+            android:defaultValue="5" />
+    </fragment>
+
+</navigation>

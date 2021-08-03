@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_notifications"
+    app:startDestination="@id/navigation_notifications">
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.kiroglue.navigationshowcase.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" >
+
+        <action
+            android:id="@+id/action_notification_to_notification_detail_no_value"
+            app:destination="@id/navigation_notifications_detail_no_value" />
+
+        <action
+            android:id="@+id/action_notifications_to_notification_detail1"
+            app:destination="@id/navigation_notification_detail1" >
+        </action>
+
+        <action
+            android:id="@+id/action_notifications_to_notification_detail1_with_arg"
+            app:destination="@id/navigation_notification_detail1" >
+            <argument
+                android:name="arg_counter"
+                app:argType="integer" />
+        </action>
+
+        <action
+            android:id="@+id/action_notifications_to_notification_detail2"
+            app:destination="@id/navigation_notification_detail2" >
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_notifications_detail_no_value"
+        android:name="com.kiroglue.navigationshowcase.ui.notificationsdetail.NotificationDetailNoValueFragment"
+        android:label="@string/title_notification_detail"
+        tools:layout="@layout/fragment_notifications_detail" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_notification_detail1"
+        android:name="com.kiroglue.navigationshowcase.ui.notificationsdetail.NotificationsDetailFragment"
+        android:label="@string/title_notification_detail"
+        tools:layout="@layout/fragment_notifications_detail" >
+        <argument
+            android:name="arg_counter"
+            app:argType="integer"
+            android:defaultValue="5" />
+        <action
+            android:id="@+id/action_notifications_detail_to_notification_add"
+            app:destination="@id/navigation_notification_add" >
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_notification_detail2"
+        android:name="com.kiroglue.navigationshowcase.ui.notificationsdetail.NotificationsDetailFragment"
+        android:label="@string/title_notification_detail"
+        tools:layout="@layout/fragment_notifications_detail" >
+        <argument
+            android:name="arg_counter"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/action_notifications_detail_to_notification_add"
+            app:destination="@id/navigation_notification_add" >
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_notification_add"
+        android:name="com.kiroglue.navigationshowcase.ui.notificationadd.NotificationAddFragment"
+        android:label="@string/title_notification_add"
+        tools:layout="@layout/fragment_notifications_detail" >
+        <action
+            android:id="@+id/action_notification_add_popup_to_notification"
+            app:popUpTo="@+id/navigation_notifications">
+        </action>
+        <action
+            android:id="@+id/action_notification_add_popup_to_notification_inclusive"
+            app:popUpTo="@+id/navigation_notifications"
+            app:popUpToInclusive="true">
+        </action>
+    </fragment>
+
+</navigation>
