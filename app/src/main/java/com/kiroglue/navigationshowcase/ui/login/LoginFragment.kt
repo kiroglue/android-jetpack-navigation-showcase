@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.kiroglue.navigationshowcase.data.UserStore
 import com.kiroglue.navigationshowcase.databinding.FragmentLoginBinding
 import com.kiroglue.navigationshowcase.model.User
 
@@ -58,12 +59,13 @@ class LoginFragment : Fragment() {
 	}
 	
 	private fun onLoginSuccess() {
-		sharedUserViewModel.user.value = User("Erhan Kıroğlu")
+		UserStore.login()
 		savedStateHandle?.set(LOGIN_SUCCESSFUL, true)
 		findNavController().popBackStack()
 	}
 	
 	private fun onLoginCanceled() {
+		UserStore.logout()
 		findNavController().popBackStack()
 	}
 	

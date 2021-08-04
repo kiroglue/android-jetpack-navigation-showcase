@@ -100,9 +100,6 @@
         android:name="com.kiroglue.navigationshowcase.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" >
-        <argument
-            android:name="arg_is_login"
-            app:argType="boolean" />
         <action
             android:id="@+id/to_login"
             app:destination="@id/navigation_login">

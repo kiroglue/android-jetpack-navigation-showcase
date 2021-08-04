@@ -8,10 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.kiroglue.navigationshowcase.R
 import com.kiroglue.navigationshowcase.databinding.FragmentProfileBinding
-import com.kiroglue.navigationshowcase.model.User
 import com.kiroglue.navigationshowcase.ui.login.LoginFragment
 import com.kiroglue.navigationshowcase.ui.login.SharedUserViewModel
 
@@ -21,8 +19,6 @@ class ProfileFragment : Fragment() {
 	private val binding get() = _binding!!
 	
 	private lateinit var sharedUserViewModel: SharedUserViewModel
-	private val safeArgs: ProfileFragmentArgs by navArgs()
-	
 	
 	override fun onCreateView(
 		inflater: LayoutInflater,
@@ -44,11 +40,9 @@ class ProfileFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		
-		mockUserLoginStatus()
-		
-		
-		sharedUserViewModel.user.observe(viewLifecycleOwner){ user->
-			if(user != null){
+		sharedUserViewModel.checkLogin()
+		sharedUserViewModel.isLogin.observe(viewLifecycleOwner){ isLogin->
+			if(isLogin){
 				//User has already logined
 				Log.i("Demo", "Viewmodel user not null")
 			}else{
@@ -65,14 +59,6 @@ class ProfileFragment : Fragment() {
 			Log.i("Demo", "Saved state result $success")
 			if(!success){
 				findNavController().popBackStack(R.id.navigation_profile,true)
-			}
-		}
-	}
-	
-	private fun mockUserLoginStatus() {
-		safeArgs.argIsLogin.also {
-			if (it) {
-				sharedUserViewModel.user.value = User("Erhan Kıroğlu")
 			}
 		}
 	}

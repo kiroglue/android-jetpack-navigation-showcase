@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.kiroglue.navigationshowcase.data.UserStore
 import com.kiroglue.navigationshowcase.databinding.FragmentNotificationsBinding
 //With Safe Args
 class NotificationsFragment : Fragment() {
@@ -100,9 +101,14 @@ class NotificationsFragment : Fragment() {
 				.actionNotificationsToNotificationDetail2(2))
 	}
 	
-	private fun navigateToAccountDetail(isLogin: Boolean) {
+	private fun navigateToAccountDetail(doLogin: Boolean) {
+		if(doLogin){
+			UserStore.login()
+		}else{
+			UserStore.logout()
+		}
 		findNavController()
 			.navigate(NotificationsFragmentDirections
-				.toProfile(isLogin))
+				.toProfile())
 	}
 }
